@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  profiles: dev
+---
+spring:
+  profiles: nonprod
+---
+spring:
+  profiles: prod
