@@ -52,4 +52,8 @@ public class ItemHandler {
         var monoItem = request.bodyToMono(Item.class).flatMap(item -> service.updateItem(id, item));
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(monoItem, Item.class);
     }
+
+    public Mono<ServerResponse> itemException(ServerRequest request) {
+        throw new RuntimeException("Functional Exception");
+    }
 }

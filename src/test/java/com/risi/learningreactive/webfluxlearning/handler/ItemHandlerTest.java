@@ -16,8 +16,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -30,19 +29,11 @@ public class ItemHandlerTest {
     @Autowired
     private ItemRepository repository;
 
-    private Collection<Item> items = Arrays.asList(
-            new Item(null, "Samsung TV", 400),
-            new Item(null, "LG TV", 420.4),
-            new Item(null, "Apple Watch", 299.99),
-            new Item(null, "Beats Headphones", 149.99),
-            new Item("ABC", "Bose Headphones", 179.99)
-    );
-
     @Before
     public void setUp() {
         repository
                 .deleteAll()
-                .thenMany(Flux.fromIterable(items))
+                .thenMany(Flux.fromIterable(Item.mongoItems()))
                 .flatMap(repository::save)
                 .blockLast();
     }
@@ -79,7 +70,7 @@ public class ItemHandlerTest {
 
     @Test
     public void createItems() {
-        var items = Arrays.asList(
+        var items = List.of(
                 new Item("DDD", "DDD", 1.99),
                 new Item("ZZZ", "ZZZ", 0.99)
         );

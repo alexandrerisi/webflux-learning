@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -21,19 +20,12 @@ public class ItemRepositoryTest {
 
     @Autowired
     private ItemRepository repository;
-    private List<Item> items = Arrays.asList(
-            new Item(null, "Samsung TV", 400),
-            new Item(null, "LG TV", 420.4),
-            new Item(null, "Apple Watch", 299.99),
-            new Item(null, "Beats Headphones", 149.99),
-            new Item("ABC", "Bose Headphones", 179.99)
-    );
 
     @Before
     public void setUp() {
         repository
                 .deleteAll()
-                .thenMany(Flux.fromIterable(items))
+                .thenMany(Flux.fromIterable(Item.mongoItems()))
                 .flatMap(repository::save)
                 .blockLast();
     }
