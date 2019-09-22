@@ -54,6 +54,6 @@ public class ItemHandler {
     }
 
     public Mono<ServerResponse> itemException(ServerRequest request) {
-        throw new RuntimeException("Functional Exception");
+        throw new RuntimeException("My Exception");
     }
 }
