@@ -1,6 +1,13 @@
 spring:
+  application:
+    name: webflux-server
   profiles:
     active: dev
+  sleuth:
+    async:
+      enabled: false
+server:
+  port: 8085
 ---
 spring:
   profiles: dev

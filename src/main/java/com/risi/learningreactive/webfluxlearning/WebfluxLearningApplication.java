@@ -1,5 +1,6 @@
 package com.risi.learningreactive.webfluxlearning;
 
+import brave.sampler.Sampler;
 import com.risi.learningreactive.webfluxlearning.domain.Item;
 import com.risi.learningreactive.webfluxlearning.domain.ItemCapped;
 import com.risi.learningreactive.webfluxlearning.repository.ItemCappedRepository;
@@ -32,12 +33,16 @@ public class WebfluxLearningApplication {
                     ItemCapped.class,
                     CollectionOptions.empty().maxDocuments(20).size(50000).capped()
             );
-            var randomItems = Flux.interval(
+            /*var randomItems = Flux.interval(
                     Duration.ofSeconds(1))
                     .map(i -> new ItemCapped(null, "Random Item" + i, 100 + i)
                     );
-            itemCappedRepository.insert(randomItems).subscribe();
+            itemCappedRepository.insert(randomItems).subscribe();*/
         };
     }
 
+    @Bean
+    public Sampler sampler() {
+        return Sampler.ALWAYS_SAMPLE;
+    }
 }
