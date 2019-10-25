@@ -17,3 +17,6 @@ ENV SPRING_APPLICATION_JSON='\
 }'
 ENV RABBIT_URI=amqp://alex-rabbit:5672
 CMD ["./mvnw", "-Dmaven.test.skip=true", "spring-boot:run"]
+
+
+docker run -e RABBIT_URI=amqp://alex-rabbit:5672/ --net=cisco-sota -p 9411:9411 openzipkin/zipkin
