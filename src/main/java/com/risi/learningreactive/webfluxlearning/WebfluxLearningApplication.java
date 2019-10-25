@@ -1,6 +1,6 @@
 package com.risi.learningreactive.webfluxlearning;
 
-import brave.sampler.Sampler;
+//import brave.sampler.Sampler;
 import com.risi.learningreactive.webfluxlearning.domain.Item;
 import com.risi.learningreactive.webfluxlearning.domain.ItemCapped;
 import com.risi.learningreactive.webfluxlearning.repository.ItemCappedRepository;
@@ -8,6 +8,7 @@ import com.risi.learningreactive.webfluxlearning.repository.ItemRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.CollectionOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -16,6 +17,7 @@ import reactor.core.publisher.Flux;
 import java.time.Duration;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class WebfluxLearningApplication {
 
     public static void main(String[] args) {
@@ -41,8 +43,8 @@ public class WebfluxLearningApplication {
         };
     }
 
-    @Bean
+    /*@Bean
     public Sampler sampler() {
         return Sampler.ALWAYS_SAMPLE;
-    }
+    }*/
 }
