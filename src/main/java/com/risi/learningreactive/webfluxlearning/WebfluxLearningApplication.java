@@ -1,6 +1,6 @@
 package com.risi.learningreactive.webfluxlearning;
 
-//import brave.sampler.Sampler;
+import brave.sampler.Sampler;
 import com.risi.learningreactive.webfluxlearning.domain.Item;
 import com.risi.learningreactive.webfluxlearning.domain.ItemCapped;
 import com.risi.learningreactive.webfluxlearning.repository.ItemCappedRepository;
@@ -43,8 +43,8 @@ public class WebfluxLearningApplication {
         };
     }
 
-    /*@Bean
+    @Bean
     public Sampler sampler() {
         return Sampler.ALWAYS_SAMPLE;
-    }*/
+    }
 }
