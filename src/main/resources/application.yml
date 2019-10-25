@@ -3,9 +3,6 @@ spring:
     name: webflux-server
   profiles:
     active: dev
-  sleuth:
-    async:
-      enabled: false
 server:
   port: 8085
 ---
@@ -17,3 +14,8 @@ spring:
 ---
 spring:
   profiles: prod
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
