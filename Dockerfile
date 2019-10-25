@@ -7,5 +7,5 @@ ENV SPRING_APPLICATION_JSON='{ "eureka" : \
         } \
     } \
 }'
-ENV RABBIT_URI: amqp://alex-rabbit:5672
+ENV RABBIT_URI=amqp://alex-rabbit:5672
 CMD ["./mvnw", "-Dmaven.test.skip=true", "spring-boot:run"]
