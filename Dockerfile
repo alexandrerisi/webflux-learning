@@ -1,9 +1,17 @@
 FROM openjdk:11
 COPY . /
-ENV SPRING_APPLICATION_JSON='{ "eureka" : \
-    { "client" : \
-        { "serviceUrl" : \
-            { "defaultZone" : "http://eureka-cisco:8761/eureka/"} \
+ENV SPRING_APPLICATION_JSON='\
+{ \
+    { "eureka" : \
+        { "client" : \
+            { "serviceUrl" : \
+                { "defaultZone" : "http://eureka-cisco:8761/eureka/"} \
+            } \
+        } \
+    }, \
+    { "spring" : \
+        { "zipkin" : \
+            { "base-url" : "http://stupefied_buck:9411" } \
         } \
     } \
 }'
