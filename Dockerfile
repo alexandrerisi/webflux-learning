@@ -11,7 +11,7 @@ ENV SPRING_APPLICATION_JSON='\
     }, \
     "spring" : { \
         "zipkin" : { \
-            "base-url" : "http://stupefied_buck:9411" \
+            "baseUrl" : "http://zipkin:9411" \
         } \
     } \
 }'
