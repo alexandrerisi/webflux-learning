@@ -1,6 +1,7 @@
 package com.risi.learningreactive.webfluxlearning.api;
 
 import com.risi.learningreactive.webfluxlearning.domain.Item;
+import com.risi.learningreactive.webfluxlearning.domain.StringWrapper;
 import com.risi.learningreactive.webfluxlearning.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -23,7 +24,12 @@ public class ItemController {
     @Autowired
     private Environment environment;
 
-    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping("/ivan")
+    public Flux<StringWrapper> vinsForIvan() {
+        return Flux.just(new StringWrapper("vin1"), new StringWrapper("vin2"), new StringWrapper("vin3"));
+    }
+
+    @GetMapping//(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Item> getAllItems() {
         return service.getAllItems();
     }

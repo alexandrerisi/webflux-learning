@@ -1,19 +1,5 @@
 FROM openjdk:11
-COPY . /
-ENV SPRING_APPLICATION_JSON='\
-{ \
-    "eureka" : { \
-        "client" : { \
-            "serviceUrl" : \
-                { "defaultZone" : "http://eureka-cisco:8761/eureka/" \
-            } \
-        } \
-    }, \
-    "spring" : { \
-        "zipkin" : { \
-            "baseUrl" : "http://zipkin:9411" \
-        } \
-    } \
-}'
-ENV RABBIT_URI=amqp://alex-rabbit:5672
-CMD ["./mvnw", "-Dmaven.test.skip=true", "spring-boot:run"]
+VOLUME /tmp
+ARG JAR_FILE
+COPY target/webflux-learning-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
